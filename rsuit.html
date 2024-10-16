@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتيجة جامعة البحر الأحمر</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+            direction: rtl;
+            display: none; /* إخفاء الجدول في البداية */
+        }
+        
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .fail {
+            color: red;
+        }
+
+        .pass {
+            color: black;
+        }
+
+        .final-grade {
+            background-color: #28a745;
+        }
+        
+        .final-result {
+            background-color: #28a745; /* لون أخضر */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>جامعة البحر الأحمر</h1>
+        <h2>كلية علوم الحاسوب و تقانة المعلومات</h2>
+
+        <label for="student-id">ادخل الرقم الجامعي:</label>
+        <input type="text" id="student-id" placeholder="رقمك الجامعي">
+        <button onclick="showResult()">استعلم عن النتيجة</button>
+
+        <div id="result-container" style="margin-top: 20px;">
+            <h3 id="student-name" style="display: none;">اسم  الطالب: بلسم عبدالكريم محمد عمر</h3>
+            <table id="result-table">
+                <tr>
+                    <th class="subject">المادة</th>
+                    <th class="grade">الدرجة</th>
+                    <th class="letter">التقدير</th>
+                </tr>
+                <tr class="pass">
+                    <td>حسبان</td>
+                    <td>2.9</td>
+                    <td>C+</td>
+                </tr>
+                <tr class="pass">
+                    <td>English</td>
+                    <td>3.2</td>
+                    <td>B</td>
+                </tr>
+                <tr class="pass">
+                    <td>أساسيات الحاسوب</td>
+                    <td>3.4</td>
+                    <td>B</td>
+                </tr>
+                <tr class="pass">
+                    <td>الإحصاء</td>
+                    <td>3.8</td>
+                    <td>A</td>
+                </tr>
+                <tr class="fail">
+                    <td>فيزياء</td>
+                    <td>2.8</td>
+                    <td>C</td>
+                </tr>
+                <tr class="pass">
+                    <td>رياضيات متقطعة</td>
+                    <td>3.1</td>
+                    <td>B</td>
+                </tr>
+            </table>
+            <table id="final-result-table" style="display: none;">
+                <tr>
+                    <th class="final-grade">المعدل النهائي</th>
+                    <th class="final-result">التقدير</th>
+                </tr>
+                <tr>
+                    <td>3.2</td>
+                    <td>B</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function showResult() {
+            const studentId = document.getElementById('student-id').value;
+            const validId = "111231922"; // الرقم الجامعي الصحيح
+            const resultTable = document.getElementById('result-table');
+            const finalResultTable = document.getElementById('final-result-table');
+            const studentName = document.getElementById('student-name');
+
+            if (studentId === validId) {
+                resultTable.style.display = 'table'; // إظهار الجدول المواد
+                studentName.style.display = 'block'; // إظهار اسم الطالب
+                finalResultTable.style.display = 'table'; // إظهار جدول المعدل النهائي
+            } else {
+                alert('رقم جامعي غير صحيح، يرجى المحاولة مرة أخرى.');
+                resultTable.style.display = 'none'; // إخفاء الجدول المواد
+                studentName.style.display = 'none'; // إخفاء اسم الطالب
+                finalResultTable.style.display = 'none'; // إخفاء جدول المعدل النهائي
+            }
+        }
+    </script>
+</body>
+</html>
